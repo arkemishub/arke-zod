@@ -2,7 +2,7 @@ import { promises as fs, existsSync } from "node:fs";
 import path from "node:path";
 import { Command } from "commander";
 import Configstore from "configstore";
-import camelCase from "lodash.camelcase";
+import kebabCase from "lodash.kebabcase";
 import ora from "ora";
 import { ModuleKind, ScriptTarget, Project as TSMProject } from "ts-morph";
 import { parseStructToSchema } from "../core/parsers";
@@ -73,7 +73,7 @@ async function pullStructs(projectKey: string) {
 			const schemaString = await parseStructToSchema(arke, parameters);
 
 			const targetDir = path.join(process.cwd(), "lib/validations/arke");
-			const filename = `${camelCase(arke.id)}.ts`;
+			const filename = `${kebabCase(arke.id)}.ts`;
 			const filePath = path.join(targetDir, filename);
 
 			if (!existsSync(targetDir)) {

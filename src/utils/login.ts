@@ -49,8 +49,8 @@ export async function login(project: Project) {
 			p.key === project.key
 				? {
 						...p,
-						access_token: data.access_token,
-						refresh_token: data.refresh_token,
+						access_token,
+						refresh_token,
 					}
 				: p,
 		);
