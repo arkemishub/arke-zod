@@ -1,5 +1,8 @@
 # Arke Zod
 
+![arke-zod](https://github.com/user-attachments/assets/e3495f0c-5c78-4e7f-b445-ab28d903c66a)
+
+
 Turn arke structs into zod schemas
 
 ## Usage
