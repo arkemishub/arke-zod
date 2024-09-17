@@ -12,7 +12,8 @@ export type BaseParameter = {
 		| "date"
 		| "integer"
 		| "float"
-		| "boolean";
+		| "boolean"
+		| "binary";
 	required: boolean;
 };
 
@@ -82,6 +83,10 @@ export type BooleanParameter = BaseParameter & {
 	default: boolean | null;
 };
 
+export type BinaryParameter = BaseParameter & {
+	type: "binary";
+};
+
 export type Parameter =
 	| DynamicParameter
 	| DateTimeParameter
@@ -91,4 +96,5 @@ export type Parameter =
 	| IntegerParameter
 	| FloatParameter
 	| LinkParameter
-	| BooleanParameter;
+	| BooleanParameter
+	| BinaryParameter;

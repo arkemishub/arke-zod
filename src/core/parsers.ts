@@ -65,6 +65,8 @@ function parseType(parameter: Parameter) {
 			return "z.number().int()";
 		case "boolean":
 			return "z.boolean()";
+		case "binary":
+			return "z.string()";
 		default:
 			throw new Error(`Unknown type: ${parameter.type}`);
 	}
