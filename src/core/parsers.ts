@@ -26,8 +26,8 @@ function buildSchemaString(arke: TUnit, parameters: Parameter[]) {
 		.map((param) => {
 			const zodStr = [
 				parseType(param),
-				parseRequired(param),
 				parseMinMax(param),
+				parseRequired(param),
 			].join("");
 			return `${param.id}: ${zodStr},`;
 		})
