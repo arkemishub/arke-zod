@@ -11,7 +11,8 @@ export type BaseParameter = {
 		| "dynamic"
 		| "date"
 		| "integer"
-		| "float";
+		| "float"
+		| "boolean";
 	required: boolean;
 };
 
@@ -76,6 +77,11 @@ export type LinkParameter = BaseParameter & {
 	};
 };
 
+export type BooleanParameter = BaseParameter & {
+	type: "boolean";
+	default: boolean | null;
+};
+
 export type Parameter =
 	| DynamicParameter
 	| DateTimeParameter
@@ -84,4 +90,5 @@ export type Parameter =
 	| StringParameter
 	| IntegerParameter
 	| FloatParameter
-	| LinkParameter;
+	| LinkParameter
+	| BooleanParameter;
