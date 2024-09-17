@@ -1,5 +1,11 @@
 # arke-zod
 
+## 0.0.4
+
+### Patch Changes
+
+- [`af2440b`](https://github.com/arkemishub/arke-zod/commit/af2440b52a0ace45228b8f85b743cf1bee2b5dc0) Thanks [@ilyichv](https://github.com/ilyichv)! - fix: parse min-max before optional
+
 ## 0.0.3
 
 ### Patch Changes
