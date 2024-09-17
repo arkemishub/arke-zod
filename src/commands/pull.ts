@@ -50,9 +50,9 @@ function findProject(projectKey: string) {
 
 async function pullStructs(projectKey: string) {
 	const project = findProject(projectKey);
+	const spinner = ora("Building schemas...\n").start();
 
 	try {
-		const spinner = ora("Building schemas...\n").start();
 		const client = initClient(project);
 		const arkeList = await client.arke
 			.getAll()
@@ -92,6 +92,7 @@ async function pullStructs(projectKey: string) {
 	} catch (error) {
 		// @ts-expect-error
 		if (error?.response?.status === 401 || error?.response?.status === 403) {
+			spinner.stop();
 			const message =
 				// @ts-expect-error
 				clientErrorMap[error.response.status as keyof typeof clientErrorMap];
@@ -99,6 +100,7 @@ async function pullStructs(projectKey: string) {
 			await login(project);
 			return pullStructs(projectKey);
 		}
+		spinner.fail("Failed to build schemas");
 		handleError(error);
 	}
 }
