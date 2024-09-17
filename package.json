@@ -1,6 +1,6 @@
 {
 	"name": "arke-zod",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Turn arke structs into zod schemas",
 	"publishConfig": {
 		"access": "public"

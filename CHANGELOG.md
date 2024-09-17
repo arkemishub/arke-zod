@@ -1,5 +1,13 @@
 # arke-zod
 
+## 0.0.3
+
+### Patch Changes
+
+- [`7ee7d4e`](https://github.com/arkemishub/arke-zod/commit/7ee7d4e31bf35efa7f35cba3e37f422cada41203) Thanks [@ilyichv](https://github.com/ilyichv)! - fix: add binary type
+
+- [`85a5aa2`](https://github.com/arkemishub/arke-zod/commit/85a5aa264646b16df51621939472a570eba6da88) Thanks [@ilyichv](https://github.com/ilyichv)! - fix: add boolean parameter
+
 ## 0.0.2
 
 ### Patch Changes
