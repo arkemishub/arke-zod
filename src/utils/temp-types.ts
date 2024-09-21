@@ -15,6 +15,7 @@ export type BaseParameter = {
 		| "boolean"
 		| "binary";
 	required: boolean;
+	default: null;
 };
 
 export type DynamicParameter = BaseParameter & {
