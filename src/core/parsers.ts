@@ -28,6 +28,7 @@ function buildSchemaString(arke: TUnit, parameters: Parameter[]) {
 				parseType(param),
 				parseMinMax(param),
 				parseRequired(param),
+				parseDefault(param),
 			].join("");
 			return `${param.id}: ${zodStr},`;
 		})
@@ -91,4 +92,21 @@ function parseMinMax(parameter: Parameter) {
 	}
 
 	return result;
+}
+
+function parseDefault(parameter: Parameter) {
+	let defaultValue: string | null = parameter.default;
+	if (
+		defaultValue !== undefined &&
+		defaultValue !== null &&
+		(typeof defaultValue !== "object" || Object.keys(defaultValue).length > 0)
+	) {
+		if (parameter.type === "string") {
+			defaultValue = `"${defaultValue}"`;
+		}
+
+		return `.default(${defaultValue})`;
+	}
+
+	return "";
 }
