@@ -1,5 +1,11 @@
 # arke-zod
 
+## 0.0.5
+
+### Patch Changes
+
+- [#5](https://github.com/arkemishub/arke-zod/pull/5) [`316e685`](https://github.com/arkemishub/arke-zod/commit/316e68518d1a8f5b8bd6d741ae3081b512b8e721) Thanks [@ilyichv](https://github.com/ilyichv)! - feat: handle defaults
+
 ## 0.0.4
 
 ### Patch Changes
