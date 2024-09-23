@@ -1,7 +1,8 @@
-import type { TStruct, TUnit } from "@arkejs/client";
+import type { TStruct } from "@arkejs/client";
 import camelCase from "lodash.camelcase";
 import type { Parameter } from "../utils/temp-types";
 
+const REQUIRED_BLACKLIST = ["arke_id"];
 const MIN_MAX_BLACKLIST = ["arke_id"];
 
 export function parseStructToSchema(id: string, struct: TStruct) {
@@ -32,7 +33,7 @@ export function buildSchemaString(id: string, parameters: Parameter[]) {
 	const schemaContent = parameters
 		.map((param) => {
 			const zodStr = [
-				parseType(param),
+				parseType(id, param),
 				parseMinMax(param),
 				parseRequired(param),
 				parseDefault(id, param),
@@ -61,7 +62,9 @@ function buildTypeString(id: string) {
 	return `export type ${typeName} = z.infer<typeof ${getSchemaName(id)}>;`;
 }
 
-function parseType(parameter: Parameter) {
+function parseType(id: string, parameter: Parameter) {
+	if (parameter.id === "arke_id") return `z.literal("${id}")`;
+
 	switch (parameter.type) {
 		case "datetime":
 			return "z.string().datetime()";
@@ -86,6 +89,8 @@ function parseType(parameter: Parameter) {
 }
 
 function parseRequired(parameter: Parameter) {
+	if (REQUIRED_BLACKLIST.includes(parameter.id)) return "";
+
 	if (!parameter.required) return ".optional()";
 	return "";
 }
