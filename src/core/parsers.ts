@@ -35,7 +35,7 @@ export function buildSchemaString(id: string, parameters: Parameter[]) {
 				parseType(param),
 				parseMinMax(param),
 				parseRequired(param),
-				parseDefault(param),
+				parseDefault(id, param),
 			].join("");
 			return `${param.id}: ${zodStr},`;
 		})
@@ -106,8 +106,10 @@ function parseMinMax(parameter: Parameter) {
 	return result;
 }
 
-function parseDefault(parameter: Parameter) {
-	let defaultValue: string | null = parameter.default;
+function parseDefault(id: string, parameter: Parameter) {
+	let defaultValue: string | null =
+		parameter.id === "arke_id" ? id : parameter.default;
+
 	if (
 		defaultValue !== undefined &&
 		defaultValue !== null &&
