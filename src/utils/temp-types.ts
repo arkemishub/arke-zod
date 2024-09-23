@@ -1,5 +1,13 @@
 // This file will be deleted when @arkejs/client will be updated to get correct types
 
+type ParameterValues<T> = Array<
+	| {
+			label: string;
+			value: T;
+	  }
+	| T
+>;
+
 export type BaseParameter = {
 	id: string;
 	label: string;
@@ -43,7 +51,7 @@ export type StringParameter = BaseParameter & {
 	multiple: boolean;
 	required: boolean;
 	strip: boolean;
-	values: string[] | null;
+	values: ParameterValues<string> | null;
 };
 
 export type IntegerParameter = BaseParameter & {
@@ -51,7 +59,7 @@ export type IntegerParameter = BaseParameter & {
 	max: number | null;
 	min: number | null;
 	multiple: boolean;
-	values: number[] | null;
+	values: ParameterValues<number> | null;
 };
 
 export type FloatParameter = BaseParameter & {
@@ -59,7 +67,7 @@ export type FloatParameter = BaseParameter & {
 	max: number | null;
 	min: number | null;
 	multiple: boolean;
-	values: number[] | null;
+	values: ParameterValues<number> | null;
 };
 
 export type LinkParameter = BaseParameter & {
